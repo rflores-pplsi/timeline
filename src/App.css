@@ -4,6 +4,9 @@
 .App {
   text-align: center;
 }
+.App .left-align {
+  text-align: left;
+}
 
 .App-logo {
   height: 10vmin;
