@@ -1,70 +1,242 @@
-# Getting Started with Create React App
+# Project Timeline
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application that allows users to add and view timeline elements. The timeline elements are saved to and loaded from a JSON file on the server.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Node.js
+- npm (Node Package Manager)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Create a new file `server.js` in the root of your project:
 
-### `npm test`
+   ```javascript
+   const express = require("express");
+   const fs = require("fs");
+   const path = require("path");
+   const bodyParser = require("body-parser");
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   const app = express();
+   const PORT = 5000;
+   const filePath = path.join(__dirname, "items", "timelineElements.json");
 
-### `npm run build`
+   app.use(bodyParser.json());
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   app.get("/api/elements", (req, res) => {
+     fs.readFile(filePath, "utf8", (err, data) => {
+       if (err) {
+         return res.status(500).send("Error reading file");
+       }
+       res.send(JSON.parse(data));
+     });
+   });
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   app.post("/api/elements", (req, res) => {
+     const newElement = req.body;
+     fs.readFile(filePath, "utf8", (err, data) => {
+       if (err) {
+         return res.status(500).send("Error reading file");
+       }
+       const elements = JSON.parse(data);
+       elements.push(newElement);
+       fs.writeFile(filePath, JSON.stringify(elements, null, 2), (err) => {
+         if (err) {
+           return res.status(500).send("Error writing file");
+         }
+         res.send(newElement);
+       });
+     });
+   });
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   app.listen(PORT, () => {
+     console.log(`Server is running on http://localhost:${PORT}`);
+   });
+   ```
 
-### `npm run eject`
+2. Create the `items` directory and an initial `timelineElements.json` file:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```sh
+   mkdir items
+   echo "[]" > items/timelineElements.json
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install the necessary dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```sh
+   npm install express body-parser
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend Setup
 
-## Learn More
+1. Install Axios:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```sh
+   npm install axios
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Update `App.js` to fetch and save elements using the backend API:
 
-### Code Splitting
+   ```javascript
+   import React, { useState, useEffect } from "react";
+   import axios from "axios";
+   import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+   import "react-vertical-timeline-component/style.min.css";
+   import AdminPanel from "./components/AdminPanel";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   const App = () => {
+     const [elements, setElements] = useState([]);
 
-### Analyzing the Bundle Size
+     useEffect(() => {
+       axios
+         .get("/api/elements")
+         .then((response) => {
+           setElements(response.data);
+         })
+         .catch((error) => {
+           console.error("Error fetching elements:", error);
+         });
+     }, []);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+     const handleSave = (newElement) => {
+       axios
+         .post("/api/elements", newElement)
+         .then((response) => {
+           setElements([...elements, response.data]);
+         })
+         .catch((error) => {
+           console.error("Error saving element:", error);
+         });
+     };
 
-### Making a Progressive Web App
+     return (
+       <div>
+         <AdminPanel onSave={handleSave} />
+         <VerticalTimeline>
+           {elements.map((element, index) => (
+             <VerticalTimelineElement
+               key={index}
+               className="vertical-timeline-element--work"
+               contentStyle={{ background: element["background-color"], color: "#222" }}
+               contentArrowStyle={{ borderRight: `7px solid ${element["background-color"]}` }}
+               date="Jan '24"
+               iconStyle={{ background: "rgb(81, 28, 135)", color: "#222" }}
+             >
+               <h3 className="vertical-timeline-element-title">{element.title}</h3>
+               <h4 className="vertical-timeline-element-subtitle">{element["sub-title"]}</h4>
+               <ul>
+                 <li>
+                   <strong>{element.Items["ticket-number"]}</strong> - {element.Items["ticket-desc"]}
+                 </li>
+               </ul>
+             </VerticalTimelineElement>
+           ))}
+         </VerticalTimeline>
+       </div>
+     );
+   };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   export default App;
+   ```
 
-### Advanced Configuration
+3. Create `AdminPanel.js` for the form:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```javascript
+   import React, { useState } from "react";
 
-### Deployment
+   const AdminPanel = ({ onSave }) => {
+     const [backgroundColor, setBackgroundColor] = useState("");
+     const [title, setTitle] = useState("");
+     const [subTitle, setSubTitle] = useState("");
+     const [ticketNumber, setTicketNumber] = useState("");
+     const [ticketDesc, setTicketDesc] = useState("");
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+     const handleSubmit = (e) => {
+       e.preventDefault();
+       const newElement = {
+         "background-color": backgroundColor,
+         title: title,
+         "sub-title": subTitle,
+         Items: {
+           "ticket-number": ticketNumber,
+           "ticket-desc": ticketDesc,
+         },
+       };
+       onSave(newElement);
+     };
 
-### `npm run build` fails to minify
+     return (
+       <form onSubmit={handleSubmit}>
+         <label>
+           Background Color:
+           <input type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} />
+         </label>
+         <label>
+           Title:
+           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+         </label>
+         <label>
+           Sub-Title:
+           <input type="text" value={subTitle} onChange={(e) => setSubTitle(e.target.value)} />
+         </label>
+         <label>
+           Ticket Number:
+           <input type="number" value={ticketNumber} onChange={(e) => setTicketNumber(e.target.value)} />
+         </label>
+         <label>
+           Ticket Description:
+           <textarea value={ticketDesc} onChange={(e) => setTicketDesc(e.target.value)} />
+         </label>
+         <button type="submit">Add Element</button>
+       </form>
+     );
+   };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   export default AdminPanel;
+   ```
+
+### Running the Application
+
+1. Install `concurrently`:
+
+   ```sh
+   npm install concurrently --save-dev
+   ```
+
+2. Update your [package.json](http://_vscodecontentref_/1) file to include the new script:
+
+   ```json
+   {
+     "name": "project-timeline",
+     "version": "1.0.0",
+     "scripts": {
+       "start": "concurrently \"npm run server\" \"npm run client\"",
+       "server": "node server.js",
+       "client": "react-scripts start"
+     },
+     "dependencies": {
+       "axios": "^0.21.1",
+       "express": "^4.17.1",
+       "body-parser": "^1.19.0",
+       "react": "^17.0.2",
+       "react-dom": "^17.0.2",
+       "react-scripts": "4.0.3",
+       "react-vertical-timeline-component": "^3.3.0"
+     },
+     "devDependencies": {
+       "concurrently": "^6.2.1"
+     }
+   }
+   ```
+
+3. Start the backend server and React application:
+
+   ```sh
+   npm start
+   ```
+
+4. Open your browser and navigate to `http://localhost:3000` to view the application.
+
+You should now be able to add new timeline elements through the admin panel, and they will be saved to and loaded from the `timelineElements.json` file on the server.
