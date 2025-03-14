@@ -11,6 +11,7 @@
 .App-logo {
   height: 10vmin;
   pointer-events: none;
+  margin: 0 20px;
 }
 
 .App-header {

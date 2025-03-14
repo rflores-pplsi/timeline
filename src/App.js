@@ -3,7 +3,8 @@ import axios from "axios";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import AdminPanel from "./AdminPanel";
-import logo from "./lsus-logo.svg";
+import lsuslogo from "./lsus-logo.svg";
+import idsuslogo from "./idsus-logo.svg";
 import "./App.css";
 
 const App = () => {
@@ -59,7 +60,10 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <div className="App-logos">
+          <img src={lsuslogo} className="App-logo" alt="lsus-logo" />
+          <img src={idsuslogo} className="App-logo" alt="idsus-logo" />
+        </div>
         <p>Tasks timeline for QAOPS Test Automation completed by Ray Flores</p>
       </header>
       <div>
