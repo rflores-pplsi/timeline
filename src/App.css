@@ -36,6 +36,41 @@
     transform: rotate(360deg);
   }
 }
+form {
+  margin: 0px auto 10px auto;
+  padding: 10px 20px;
+  background: #e4e4e4;
+}
+form label {
+  display: block;
+  margin: 10px 0px 5px 0px;
+}
+form .line-items-block {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+form .line-items-block .left {
+  display: inline-block;
+  width: 50%;
+}
+form .line-items-block .right {
+  display: inline-block;
+  width: 50%;
+}
+.column,
+.column .line-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  flex: 1 1 20%;
+  margin: 5px;
+}
+.column label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  text-align: left;
+}
 .vertical-timeline * {
   box-sizing: border-box;
 }
@@ -145,6 +180,7 @@
   -webkit-animation: cd-bounce-1 0.6s;
   -moz-animation: cd-bounce-1 0.6s;
   animation: cd-bounce-1 0.6s;
+  color: #fff;
 }
 @-webkit-keyframes cd-bounce-1 {
   0% {
@@ -217,6 +253,7 @@
   content: "";
   display: table;
   clear: both;
+  color: #fff;
 }
 .vertical-timeline-element-content h2 {
   color: #303e49;
@@ -240,12 +277,16 @@
 .vertical-timeline-element-subtitle {
   margin: 0;
 }
+.vertical-timeline-element-content ul li {
+  text-align: left;
+}
 .vertical-timeline-element-content .vertical-timeline-element-date {
   float: left;
   padding: 0.8em 0;
   opacity: 1;
 }
 .vertical-timeline-element-content-arrow {
+  color: #fff;
   content: "";
   position: absolute;
   top: 16px;
@@ -364,6 +405,7 @@
   -webkit-animation: cd-bounce-2 0.6s;
   -moz-animation: cd-bounce-2 0.6s;
   animation: cd-bounce-2 0.6s;
+  color: #fff;
 }
 @media only screen and (min-width: 1170px) {
   .vertical-timeline--two-columns.vertical-timeline--animate
@@ -375,6 +417,7 @@
     -webkit-animation: cd-bounce-2-inverse 0.6s;
     -moz-animation: cd-bounce-2-inverse 0.6s;
     animation: cd-bounce-2-inverse 0.6s;
+    color: #fff;
   }
 }
 @media only screen and (max-width: 1169px) {
@@ -383,6 +426,7 @@
     -webkit-animation: cd-bounce-2-inverse 0.6s;
     -moz-animation: cd-bounce-2-inverse 0.6s;
     animation: cd-bounce-2-inverse 0.6s;
+    color: #fff;
   }
 }
 @-webkit-keyframes cd-bounce-2 {

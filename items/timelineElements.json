@@ -1,0 +1,266 @@
+[
+  {
+    "id": "1",
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "514,515,518,519,520",
+    "monthYear": "Jan '25",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "514",
+        "ticketDesc": "Built LSUS footer link automation"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "515",
+        "ticketDesc": "Build Automation for App links ( App Store and Google Play )"
+      },
+      {
+        "indexId": 2,
+        "ticketNumber": "518",
+        "ticketDesc": "Legal Services - Add the logic to check for the  ‘View Plans Details' CTA button"
+      },
+      {
+        "indexId": 3,
+        "ticketNumber": "519",
+        "ticketDesc": "Fix timing on marketing pop-ups \"click to close\""
+      },
+      {
+        "indexId": 4,
+        "ticketNumber": "520",
+        "ticketDesc": "POC: Send Playwright reports to New Relic"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "524,528,529,531,532",
+    "monthYear": "Feb '25",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "505",
+        "ticketDesc": "Added Safari Desktop as Testing Browser"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "528",
+        "ticketDesc": "Create Custom New Relic Reporter"
+      },
+      {
+        "indexId": 2,
+        "ticketNumber": "529",
+        "ticketDesc": "Build First Iteration of of New Relic Dashboard for QAOPS"
+      },
+      {
+        "indexId": 3,
+        "ticketNumber": "531",
+        "ticketDesc": "Testing BuyNow on Production - release 1/31/2024"
+      },
+      {
+        "indexId": 4,
+        "ticketNumber": "532",
+        "ticketDesc": "Get a list of all pages on LSUS prod from Rest API for use in datasheet"
+      }
+    ]
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "547,552,565",
+    "monthYear": "Mar '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "547",
+        "ticketDesc": "Find UAT links on Production legalshield.com"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "552",
+        "ticketDesc": "LSUS maintenance - daily prod health"
+      },
+      {
+        "indexId": 2,
+        "ticketNumber": "565",
+        "ticketDesc": "Create Automation for all CTA's on GBB"
+      }
+    ],
+    "id": "af7a23c5-674a-4f63-bf15-bc05cd481e8a"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "524,528,529,531",
+    "monthYear": "May '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "524",
+        "ticketDesc": "Added Safari Desktop as Testing Browser"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "520",
+        "ticketDesc": "Create Custom New Relic Reporter"
+      },
+      {
+        "indexId": 2,
+        "ticketNumber": "529",
+        "ticketDesc": "Build First Iteration of of New Relic Dashboard for QAOPS"
+      }
+    ],
+    "id": "6591f541-2f38-467f-a073-ea55c909457c"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "583, 665",
+    "monthYear": "Jun '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "583",
+        "ticketDesc": "Create automation new PDLPs"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "665",
+        "ticketDesc": "Add initial Playwright and tests to channels-wpcore-plugin"
+      }
+    ],
+    "id": "7787a0b6-9014-4f87-904b-e6396b5320bd"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "674, Begin Webflow Research",
+    "monthYear": "Jul '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "674",
+        "ticketDesc": "LSUS UAT: Business Addon Testing (GBB only)"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "Webflow Setup",
+        "ticketDesc": "Understand structures and schemas from Webflow to begin transition from WordPress"
+      }
+    ],
+    "id": "8bdc00f2-9ff3-43b4-b7fe-495fb9361efa"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "720, Webflow structuring",
+    "monthYear": "Aug '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "720",
+        "ticketDesc": "IDSUS/Webflow: Create Automation for CTA's"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "Webflow structuring",
+        "ticketDesc": "Rework the existing WordPress tests to work with Webflow's structures"
+      }
+    ],
+    "id": "adf91289-7576-4489-9871-e19276b38af1"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "753, Manual Testing UAT Webflow",
+    "monthYear": "Sep '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "753",
+        "ticketDesc": "LSUS: create initial CTA testing for Webflow Pages"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "Manual Testing UAT Webflow",
+        "ticketDesc": "Test all Webflow pages for CTA's"
+      }
+    ],
+    "id": "9d0af4d1-b869-4a26-917e-63206405fa2e"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "817, 818, 822, Manual Testing Webflow, New Relic Reporting",
+    "monthYear": "Oct '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "817",
+        "ticketDesc": "LSUS/Webflow: Create CSV of press post types from PPLSI.com"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "818",
+        "ticketDesc": "LSUS/Webflow: Create CSV of all posts after July 31, 2024 from Legalshield.com"
+      },
+      {
+        "indexId": 2,
+        "ticketNumber": "822",
+        "ticketDesc": "LSUS/Webflow: Create Automation for all PDLP's"
+      },
+      {
+        "indexId": 3,
+        "ticketNumber": "Manual Testing Webflow",
+        "ticketDesc": "Test all Webflow pages for CTA's"
+      },
+      {
+        "indexId": 4,
+        "ticketNumber": "New Relic Reporting",
+        "ticketDesc": "Setup the Playwright Reporter to send test data to New Relic"
+      }
+    ],
+    "id": "29dc70e1-38cb-4fd1-bc5e-311b85e56306"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "858, Manual Testing All Environments Webflow",
+    "monthYear": "Nov '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "858",
+        "ticketDesc": "IDSUS/LSUS: Create Automation Testing"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "Manual Testing Webflow",
+        "ticketDesc": "Test all Webflow pages (CTA's, Forms, Broken Links, etc)"
+      }
+    ],
+    "id": "7e09830b-e187-4523-8103-73c5a2ba5542"
+  },
+  {
+    "background-color": "",
+    "title": "QAOPS Test Automation",
+    "sub-title": "Manual Testing, Squad restructuring collaborations",
+    "monthYear": "Dec '24",
+    "Items": [
+      {
+        "indexId": 0,
+        "ticketNumber": "Manual Testing Webflow",
+        "ticketDesc": "Test all Webflow pages for CTA's"
+      },
+      {
+        "indexId": 1,
+        "ticketNumber": "Sqaud Restructuring",
+        "ticketDesc": "Collaborate with co-workers to ensure company direction is being satisfied with development of QA squad"
+      }
+    ],
+    "id": "761a1bab-f6bc-4d62-bb77-ae4610744758"
+  }
+]
